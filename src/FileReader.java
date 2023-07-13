@@ -1,11 +1,17 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The FileReader class is responsible for reading bank information from a CSV file.
+ * BigDecimal is a class from java.math used for precise decimal calculations. This ensures
+ * accurate representation when calculating monetary values, incase calculation features are 
+ * needed in the future.
+ * @author Juan Moreno, Javier Ontiveros
+ * @version 1.0.2
  */
 
 public class FileReader {
@@ -33,6 +39,19 @@ public class FileReader {
                 String[] data = line.split(",");
 
                 // Extract the bank user information from the data array
+                int identificationNumber = Integer.parseInt(data[0]);
+                String firstName = data[1];
+                String lastName = data[2];
+                String dateOfBirth = data[3];
+                String address = data[4];
+                String phoneNumber = data[5];
+                int checkingAccountNumber = Integer.parseInt(data[6]);
+                BigDecimal checkingStartingBalance = new BigDecimal(data[7]);
+                int savingsAccountNumber = Integer.parseInt(data[8]);
+                BigDecimal savingsStartingBalance = new BigDecimal(data[9]);
+                int creditAccountNumber = Integer.parseInt(data[10]);
+                int creditMax = Integer.parseInt(data[11]);
+                BigDecimal creditStartingBalance = new BigDecimal(data[12]);
                 
                 // Create the account and person objects
 
