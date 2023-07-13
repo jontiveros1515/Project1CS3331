@@ -14,5 +14,6 @@ public class Checking extends Account{
     public void withdrawAccount(){
         //TODO: withdraw
         //TODO: log information
+        //random
     }
 }
