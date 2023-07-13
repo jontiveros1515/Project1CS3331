@@ -8,7 +8,7 @@ public class RunBank {
         System.out.println("B: Bank Account Manager");
 
         String accountChoice = scanner.nextLine();  // Read user input
-        System.out.println(accountChoice);  // Output user input
+        System.out.println(accountChoice);  // Output user input fjsdjfjd
 
 
         switch(accountChoice) {
