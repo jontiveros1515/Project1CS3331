@@ -11,7 +11,7 @@ import java.util.List;
  * accurate representation when calculating monetary values, incase calculation features are 
  * needed in the future.
  * @author Juan Moreno, Javier Ontiveros
- * @version 1.0.2
+ * @version 1.0.3
  */
 
 public class FileReader {
@@ -54,8 +54,19 @@ public class FileReader {
                 BigDecimal creditStartingBalance = new BigDecimal(data[12]);
                 
                 // Create the account and person objects
+                Account account = new Account();
+                Person person = new Person(firstName, lastName, dateOfBirth, phoneNumber);
 
                 // Set the account and person details
+                account.setCustomer(person);
+                account.getPersonInformation().setAddress(address);
+                account.getChecking().setCheckingAccountNumber(checkingAccountNumber);
+                account.getChecking().setCheckingStartingBalance(checkingStartingBalance);
+                account.getSaving().setSavingsAccountNumber(savingsAccountNumber);
+                account.getSaving().setSavingsStartingBalance(savingsStartingBalance);
+                account.getCredit().setCreditAccountNumber(creditAccountNumber);
+                account.getCredit().setCeditMax(creditMax);
+                account.getCredit().setCreditStartingBalance(creditStartingBalance);
 
                 users.add(account);
             }
