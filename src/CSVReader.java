@@ -2,10 +2,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.math.BigDecimal;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * The FileReader class is responsible for reading bank information from a CSV file.
@@ -66,5 +66,36 @@ public class CSVReader {
             // Handle the file reading exception as needed
         }
         return users;
-    } 
+    }
+
+    /**
+     * Updates the bank user information and writes it to the CSV file.
+     *
+     * @param users The list of Account objects containing the updated bank user information.
+     */
+    public static void updateUsers(ArrayList<Account> users) {
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter writer = new BufferedWriter(fw);
+
+            // Write the header line
+            writer.write("Identification Number,First Name,Last Name,Date of Birth,Address,Phone Number,Checking Account Number,Checking Starting Balance,Savings Account Number,Savings Starting Balance,Credit Account Number,Credit Max,Credit Starting Balance");
+            writer.newLine();
+
+            // Write the user information
+            for (Account user : users) {
+                Customer customer = user.getCustomer();
+                Checking checking = user.getChecking();
+                Saving saving = user.getSaving();
+                Credit credit = user.getCredit();
+
+                
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the file writing exception as needed
+        }
+    }
 }
