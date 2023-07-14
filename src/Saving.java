@@ -50,4 +50,8 @@ public class Saving extends Account {
     public void setSavingsStartingBalance(double savingsStartingBalance) {
         this.savingsStartingBalance = savingsStartingBalance;
     }
+
+    public static void savingUI(){
+        
+    }
 }

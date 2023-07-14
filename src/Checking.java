@@ -59,4 +59,8 @@ public class Checking extends Account {
     public void setCheckingStartingBalance(double checkingStartingBalance) {
         this.checkingStartingBalance = checkingStartingBalance;
     }
+
+    public static void checkingUI(){
+        
+    }
 }

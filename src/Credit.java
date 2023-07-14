@@ -70,4 +70,8 @@ public class Credit extends Account{
     public void setCreditStartingBalance(double creditStartingBalance){
         this.creditStartingBalance = creditStartingBalance;
     }
+
+    public static void creditUI(){
+        
+    }
 }

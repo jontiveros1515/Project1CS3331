@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * The Customer class represents a customer who has personal information and can interact with their accounts.
@@ -8,7 +9,7 @@ import java.util.List;
  * @version 1.0.0
  */
 public class Customer extends Person {
-    private int identificationNumber;
+    protected int identificationNumber;
 
     /**
      * Constructs a Customer object with the specified personal information and identification number.
@@ -32,5 +33,46 @@ public class Customer extends Person {
         this.identificationNumber = identificationNumber;
     }
 
+    public static void customerUI(ArrayList<Account> users){
+        Scanner scanner = new Scanner(System.in); 
+
+        System.out.println("Please enter first and last name");
+        String nameInput = scanner.nextLine();  // Read user input
+
+        boolean counter = true;
+        while(counter){
+
+            for (Account user : users) {
+                String name = user.customer.firstName +" "+ user.customer.lastName;
+                if(name.equals(nameInput)){
+                    System.out.println("Welcome " + name);
+                    System.out.println("Please Select an Option:");
+                    System.out.println("A) Checking.  B) Credit.  C) Saving.");
+                    String accountChoiceInput = scanner.nextLine();  // Read user input
+                        switch(accountChoiceInput) {
+                            case "A":
+                                Checking.checkingUI();;
+                                break;
+                            case "B":
+                                Credit.creditUI();
+                                break;
+                            case "C":
+                                Saving.savingUI();
+                                break;                           
+                          default:
+                            // code block
+                            System.out.println("Wrong Selection");
+                        }
+                    break;
+                }
+                else {
+                    System.out.println("Account does not exist, Try Again");
+                    break;
+                }
+            }
+            System.out.println();
+
+        }
+    }
 
 }
