@@ -7,7 +7,13 @@ import java.math.BigDecimal;
  */
 public class Saving extends Account {
     private int savingsAccountNumber;
-    private BigDecimal savingsStartingBalance;
+    private double savingsStartingBalance;
+
+    public Saving(int savingsAccountNumber, double savingsStartingBalance){
+        setSavingsAccountNumber(savingsAccountNumber);
+        setSavingsStartingBalance(savingsStartingBalance);
+    }
+
 
     /**
      * Retrieves the savings account number.
@@ -32,7 +38,7 @@ public class Saving extends Account {
      *
      * @return The starting balance of the savings account.
      */
-    public BigDecimal getSavingsStartingBalance() {
+    public double getSavingsStartingBalance() {
         return savingsStartingBalance;
     }
 
@@ -41,7 +47,7 @@ public class Saving extends Account {
      *
      * @param savingsStartingBalance The starting balance to set.
      */
-    public void setSavingsStartingBalance(BigDecimal savingsStartingBalance) {
+    public void setSavingsStartingBalance(double savingsStartingBalance) {
         this.savingsStartingBalance = savingsStartingBalance;
     }
 }

@@ -1,21 +1,16 @@
 import java.math.BigDecimal;
-/**
- * The Checking class represents a checking account that extends the Account class.
- * It contains information about the checking account number and the starting balance of the checking account.
- * @author Juan Moreno, Javier Ontiveros
- * @version 1.0.1
- */
-public class Checking extends Account {
-    private int checkingAccountNumber;
-    private BigDecimal checkingStartingBalance;
 
-    Checking(int checkingAccountNumber, BigDecimal checkingStartingBalance){
+public class Checking extends Account {
+    protected int checkingAccountNumber;
+    protected double checkingStartingBalance;
+
+    Checking(int checkingAccountNumber, double checkingStartingBalance){
         setCheckingAccountNumber(checkingAccountNumber);
         setCheckingStartingBalance(checkingStartingBalance);
     }
 
     public void getUserBalance(){
-        //TODO: Inquire about a balance
+        System.out.println("Your Balance is: " + checkingStartingBalance);
     }
 
     public void depositAccount(){
@@ -52,7 +47,7 @@ public class Checking extends Account {
      *
      * @return The starting balance of the checking account.
      */
-    public BigDecimal getCheckingStartingBalance() {
+    public double getCheckingStartingBalance() {
         return checkingStartingBalance;
     }
     
@@ -61,7 +56,7 @@ public class Checking extends Account {
      *
      * @param checkingStartingBalance The starting balance to set.
      */
-    public void setCheckingStartingBalance(BigDecimal checkingStartingBalance) {
+    public void setCheckingStartingBalance(double checkingStartingBalance) {
         this.checkingStartingBalance = checkingStartingBalance;
     }
 }

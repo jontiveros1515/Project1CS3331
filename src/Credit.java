@@ -1,5 +1,3 @@
-import java.math.BigDecimal;
-
 /**
  * The Credit class represents a credit account that extends the Account class.
  * It contains information about the credit account number, credit limit (ma)
@@ -9,10 +7,16 @@ import java.math.BigDecimal;
  */
 
 public class Credit extends Account{
-    private int creditAccountNumber;
-    private int creditMax;
-    private BigDecimal creditStartingBalance;
+    protected int creditAccountNumber;
+    protected int creditMax;
+    protected double creditStartingBalance;
 
+    public Credit(int creditAccountNumber, int creditMax, double creditStartingBalance){
+        setCreditAccountNumber(creditAccountNumber);
+        setCreditMax(creditMax);
+        setCreditStartingBalance(getCreditStartingBalance());
+    }
+    
     /**
      * Retrieves the credit account number
      * 
@@ -54,7 +58,7 @@ public class Credit extends Account{
      * 
      * @return The starting balance of the credit account.
      */
-    public BigDecimal getCreditStartingBalance(){
+    public double getCreditStartingBalance(){
         return creditStartingBalance;
     }
 
@@ -63,7 +67,7 @@ public class Credit extends Account{
      * 
      * @param creditStartingBalance The starting balance to set as a monetary value with 2 decimal place accuracy.
      */
-    public void setCreditStartingBalance(BigDecimal creditStartingBalance){
+    public void setCreditStartingBalance(double creditStartingBalance){
         this.creditStartingBalance = creditStartingBalance;
     }
 }

@@ -5,20 +5,11 @@
  * @version 1.0.0
  */
 public class Person {
-    private String firstName;
-    private String lastName;
-    private String dateOfBirth;
-    private String phoneNumber;
-
-    /**
-     * Constructs a Person object with default values for the personal information.
-     */
-    public Person() {
-        firstName = "";
-        lastName = "";
-        dateOfBirth = "";
-        phoneNumber = "";
-    }
+    protected String firstName;
+    protected String lastName;
+    protected String dateOfBirth;
+    protected String address;
+    protected String phoneNumber;
     
     /**
      * Constructs a Person object with the specified first name, last name, date of birth, and phone number.
@@ -28,11 +19,12 @@ public class Person {
      * @param dateOfBirth The date of birth of the person.
      * @param phoneNumber The phone number of the person.
      */
-    public Person(String firstName, String lastName, String dateOfBirth, String phoneNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.phoneNumber = phoneNumber;
+    public Person(String firstName, String lastName, String dateOfBirth, String address ,String phoneNumber) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setDateOfBirth(dateOfBirth);
+        setAddress(address);
+        setPhoneNumber(phoneNumber);
     }
 
     /**
@@ -105,5 +97,13 @@ public class Person {
      */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
