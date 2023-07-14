@@ -1,49 +1,109 @@
+/**
+ * The Person class represents a person with personal information such as their first name,
+ * last name, date of birth, and phone number.
+ * @author Juan Moreno, Javier Ontiveros
+ * @version 1.0.0
+ */
 public class Person {
-    String FirstName;
-    String LastName;
-    String DateOfBirth;
-    String PhoneNumber;
+    private String firstName;
+    private String lastName;
+    private String dateOfBirth;
+    private String phoneNumber;
 
-    Person(){}
-
-    Person(String FirstName, String LastName, String DateOfBirth, String PhoneNumber)
-    {
-        setFirstName(FirstName);
-        setLastName(LastName);
-        setDateOfBirth(DateOfBirth);
-        setPhoneNumber(PhoneNumber);
+    /**
+     * Constructs a Person object with default values for the personal information.
+     */
+    public Person() {
+        firstName = "";
+        lastName = "";
+        dateOfBirth = "";
+        phoneNumber = "";
+    }
+    
+    /**
+     * Constructs a Person object with the specified first name, last name, date of birth, and phone number.
+     *
+     * @param firstName   The first name of the person.
+     * @param lastName    The last name of the person.
+     * @param dateOfBirth The date of birth of the person.
+     * @param phoneNumber The phone number of the person.
+     */
+    public Person(String firstName, String lastName, String dateOfBirth, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.phoneNumber = phoneNumber;
     }
 
+    /**
+     * Retrieves the first name of the person.
+     *
+     * @return The first name.
+     */
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
-    public String getLastName() {
-        return LastName;
-    }
-
-    public String getDateOfBirth() {
-        return DateOfBirth;
-    }
-
-    public String getPhoneNumber() {
-        return PhoneNumber;
-    }
-
+    /**
+     * Sets the first name of the person.
+     *
+     * @param firstName The first name to set.
+     */
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
+    /**
+     * Retrieves the last name of the person.
+     *
+     * @return The last name.
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * Sets the last name of the person.
+     *
+     * @param lastName The last name to set.
+     */
     public void setLastName(String lastName) {
-        LastName = lastName;
-    }
-    
-    public void setDateOfBirth(String dateOfBirth) {
-        DateOfBirth = dateOfBirth;
+        this.lastName = lastName;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
+    /**
+     * Retrieves the date of birth of the person.
+     *
+     * @return The date of birth.
+     */
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
-    
+
+    /**
+     * Sets the date of birth of the person.
+     *
+     * @param dateOfBirth The date of birth to set.
+     */
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    /**
+     * Retrieves the phone number of the person.
+     *
+     * @return The phone number.
+     */
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    /**
+     * Sets the phone number of the person.
+     *
+     * @param phoneNumber The phone number to set.
+     */
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }

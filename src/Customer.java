@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * The Customer class represents a customer who has personal information and can interact with their accounts.
  * It extends the Person class and contains a list of accounts associated with the customer.
