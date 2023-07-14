@@ -115,4 +115,24 @@ public class CSVReader {
             // Handle the file writing exception as needed
         }
     }
+    
+    /**
+     * Writes the log string to a text file named "TextLog.txt".
+     *
+     * @param log The log string to be written.
+     */
+    public static void textLog(String log) {
+        try {
+            FileWriter fw = new FileWriter("TextLog.txt", true);
+            BufferedWriter writer = new BufferedWriter(fw);
+
+            writer.write(log);
+            writer.newLine();
+
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the file writing exception as needed
+        }
+    }
 }
