@@ -1,5 +1,69 @@
+import java.math.BigDecimal;
+
+/**
+ * The Credit class represents a credit account that extends the Account class.
+ * It contains information about the credit account number, credit limit (ma)
+ * and the starting balance of the credit account as a BigDecimal.
+ * @author Juan Moreno, Javier Ontiveros
+ * @version 1.0.1
+ */
+
 public class Credit extends Account{
-    int creditAccountNumber;
-    int creditMax;
-    double creditStartingBalance;
+    private int creditAccountNumber;
+    private int creditMax;
+    private BigDecimal creditStartingBalance;
+
+    /**
+     * Retrieves the credit account number
+     * 
+     * @return the credit account number (int)
+     */
+    public int getCreditAccountNumber(){
+        return creditAccountNumber;
+    }
+
+    /**
+     * Sets the credit account number.
+     * 
+     * @param creditAccountNumber The credit account number is set
+     */
+    public void setCreditAccountNumber(int creditAccountNumber){
+        this.creditAccountNumber = creditAccountNumber;
+    }
+
+    /**
+     * Retrieves the credit limit (maximum amount that can be charged).
+     * 
+     * @return The credit limit (int)
+     */
+    public int getCreditMax(){
+        return creditMax;
+    }
+
+    /**
+     * Sets the credit limit (maximum amount that can be charged).
+     * 
+     * @param creditMax The credit limit to set. 
+     */
+    public void setCreditMax(int creditMax){
+        this.creditMax = creditMax;
+    }
+
+    /**
+     * Retrieves the starting balance of the credit account.
+     * 
+     * @return The starting balance of the credit account.
+     */
+    public BigDecimal getCreditStartingBalance(){
+        return creditStartingBalance;
+    }
+
+    /**
+     * Sets the starting balance of the credit account.
+     * 
+     * @param creditStartingBalance The starting balance to set as a monetary value with 2 decimal place accuracy.
+     */
+    public void setCreditStartingBalance(BigDecimal creditStartingBalance){
+        this.creditStartingBalance = creditStartingBalance;
+    }
 }
