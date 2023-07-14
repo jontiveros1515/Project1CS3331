@@ -89,7 +89,22 @@ public class CSVReader {
                 Saving saving = user.getSaving();
                 Credit credit = user.getCredit();
 
-                
+                String line = customer.getIdentificationNumber() + ","
+                        + customer.getFirstName() + ","
+                        + customer.getLastName() + ","
+                        + customer.getDateOfBirth() + ","
+                        + customer.getAddress() + ","
+                        + customer.getPhoneNumber() + ","
+                        + checking.getCheckingAccountNumber() + ","
+                        + checking.getCheckingStartingBalance() + ","
+                        + saving.getSavingsAccountNumber() + ","
+                        + saving.getSavingsStartingBalance() + ","
+                        + credit.getCreditAccountNumber() + ","
+                        + credit.getCreditMax() + ","
+                        + credit.getCreditStartingBalance();
+
+                writer.write(line);
+                writer.newLine();
             }
 
             writer.close();
