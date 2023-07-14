@@ -53,3 +53,4 @@ public class Customer extends Person {
     public void addAccount(Account account) {
         accounts.add(account);
     }
+}
