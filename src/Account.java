@@ -81,4 +81,8 @@ public class Account {
     public void setCredit(Credit credit) {
         this.credit = credit;
     }
+
+    public Object getPersonInformation() {
+        return null;
+    }
 }

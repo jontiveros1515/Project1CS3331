@@ -23,6 +23,24 @@ public class Customer extends Person {
     }
 
     /**
+    * Constructs a Customer object with a person object and an identificationNumber.
+    */
+    public Customer(Person person, int identificationNumber){
+        super(person.getFirstName(), person.getLastName(), person.getDateOfBirth(), person.getPhoneNumber());
+        this.identificationNumber = identificationNumber;
+        this.accounts = new ArrayList<>();
+    }
+
+    /**
+    * Constructs a Customer object with a person object and an identificationNumber defaulted at 0.
+    */
+    public Customer(Person person){
+        super(person.getFirstName(), person.getLastName(), person.getDateOfBirth(), person.getPhoneNumber());
+        identificationNumber = 0;
+        this.accounts = new ArrayList<>();
+    }
+
+    /**
      * Constructs a Customer object with the specified personal information and identification number.
      *
      * @param firstName           The first name of the customer.
