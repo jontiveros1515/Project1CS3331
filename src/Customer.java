@@ -12,6 +12,17 @@ public class Customer extends Person {
     private List<Account> accounts;
 
     /**
+     * The default constructor initializes the personal information fields (inherited from the Person class) 
+     * with default values using the super() call. It also initializes the identification number to 0 and 
+     * creates an empty ArrayList for the accounts.
+     */
+    public Customer() {
+        super();
+        identificationNumber = 0;
+        accounts = new ArrayList<>();
+    }
+
+    /**
      * Constructs a Customer object with the specified personal information and identification number.
      *
      * @param firstName           The first name of the customer.
