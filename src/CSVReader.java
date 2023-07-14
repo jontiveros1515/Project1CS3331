@@ -69,13 +69,15 @@ public class CSVReader {
     }
 
     /**
-     * Updates the bank user information and writes it to the CSV file.
+    * Updates the bank user information and writes it to the CSV file.
      *
      * @param users The list of Account objects containing the updated bank user information.
      */
     public static void updateUsers(ArrayList<Account> users) {
+        File updatedFile = new File("src/Updated Bank Users.csv");
+
         try {
-            FileWriter fw = new FileWriter(file);
+            FileWriter fw = new FileWriter(updatedFile);
             BufferedWriter writer = new BufferedWriter(fw);
 
             // Write the header line
@@ -90,18 +92,18 @@ public class CSVReader {
                 Credit credit = user.getCredit();
 
                 String line = customer.getIdentificationNumber() + ","
-                        + customer.getFirstName() + ","
-                        + customer.getLastName() + ","
-                        + customer.getDateOfBirth() + ","
-                        + customer.getAddress() + ","
-                        + customer.getPhoneNumber() + ","
-                        + checking.getCheckingAccountNumber() + ","
-                        + checking.getCheckingStartingBalance() + ","
-                        + saving.getSavingsAccountNumber() + ","
-                        + saving.getSavingsStartingBalance() + ","
-                        + credit.getCreditAccountNumber() + ","
-                        + credit.getCreditMax() + ","
-                        + credit.getCreditStartingBalance();
+                    + customer.getFirstName() + ","
+                    + customer.getLastName() + ","
+                    + customer.getDateOfBirth() + ","
+                    + customer.getAddress() + ","
+                    + customer.getPhoneNumber() + ","
+                    + checking.getCheckingAccountNumber() + ","
+                    + checking.getCheckingStartingBalance() + ","
+                    + saving.getSavingsAccountNumber() + ","
+                    + saving.getSavingsStartingBalance() + ","
+                    + credit.getCreditAccountNumber() + ","
+                    + credit.getCreditMax() + ","
+                    + credit.getCreditStartingBalance();
 
                 writer.write(line);
                 writer.newLine();
