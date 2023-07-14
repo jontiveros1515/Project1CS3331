@@ -137,21 +137,6 @@ public class CSVReader {
     }
 
     public static void main(String[] args) {
-        // Test getUsers method
-        // ArrayList<Account> users = CSVReader.getUsers();
-        // System.out.println("Number of users: " + users.size());
-    
-        // Test updateUsers method
-        // Account user = users.get(0);
-        // user.getCustomer().getPersonInformation().setAddress("123 Main St");
-        // user.getChecking().setCheckingStartingBalance(1000.00);
-        // user.getSaving().setSavingsStartingBalance(5000.00);
-        // user.getCredit().setCreditStartingBalance(2000.00);
-    
-        // CSVReader.updateUsers(users);
-    
-        // Test textLog method
-        CSVReader.textLog("Log entry 1");
-        CSVReader.textLog("Log entry 2");
+        
     }
 }
