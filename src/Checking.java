@@ -1,24 +1,55 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * The Checking class represents a checking account that extends the Account class.
+ * It contains information about the checking account number and the starting balance of the checking account.
+ * It also provides functionality for depositing, withdrawing, transferring money, and making payments.
+ * 
+ * @author Juan Moreno, Javier Ontiveros
+ * @version 1.0.0
+ */
 public class Checking extends Account {
     protected  int checkingAccountNumber;
     protected  double checkingStartingBalance;
 
-    Checking(int checkingAccountNumber, double checkingStartingBalance){
+    /**
+     * Constructs a Checking object with the specified checking account number and starting balance.
+     *
+     * @param checkingAccountNumber    The checking account number.
+     * @param checkingStartingBalance The starting balance of the checking account.
+     */
+    public Checking(int checkingAccountNumber, double checkingStartingBalance){
         setCheckingAccountNumber(checkingAccountNumber);
         setCheckingStartingBalance(checkingStartingBalance);
     }
 
+    /**
+     * Retrieves the user's balance from the checking account.
+     *
+     * @return The user's balance.
+     */
     public double getUserBalance(){
         return this.checkingStartingBalance;
     }
 
+    /**
+     * Deposits the specified amount into the checking account.
+     *
+     * @param checkingStartingBalance The current balance of the checking account.
+     * @param deposit                 The amount to deposit.
+     */
     public void depositAccount(double checkingStartingBalance, double deposit){ 
         this.checkingStartingBalance = checkingStartingBalance + deposit; 
         System.out.println(deposit + " has been deposited");
     }
 
+    /**
+     * Withdraws the specified amount from the checking account.
+     *
+     * @param checkingStartingBalance The current balance of the checking account.
+     * @param withdraw                The amount to withdraw.
+     */
     public void withdrawAccount(double checkingStartingBalance, double withdraw){
         //TODO: withdraw
         if (withdraw <= checkingStartingBalance){
@@ -32,6 +63,10 @@ public class Checking extends Account {
         //random
     }
 
+    /**
+     * Transfers money from the checking account to another account.
+     * The user can choose the recipient and the amount to transfer.
+     */
     public void transferMoney(){
   
         boolean quit = false;
@@ -64,6 +99,10 @@ public class Checking extends Account {
 
     }
 
+    /**
+     * Pays money from the checking account to another account.
+     * The user can choose the recipient and the amount to pay.
+     */
     public void PayMoneyTo(){
         boolean quit = false;
         ArrayList<Account> users = Account.getUsers();
@@ -132,6 +171,10 @@ public class Checking extends Account {
         this.checkingStartingBalance = checkingStartingBalance;
     }
 
+    /**
+     * Displays the checking account user interface.
+     * The user can choose options to check balance, withdraw, deposit, or exit.
+     */
     public  void checkingUI(){
         Scanner scanner = new Scanner(System.in);
         boolean quit = false;
