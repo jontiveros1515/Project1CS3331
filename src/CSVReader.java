@@ -9,9 +9,7 @@ import java.util.ArrayList;
 
 /**
  * The FileReader class is responsible for reading bank information from a CSV file.
- * BigDecimal is a class from java.math used for precise decimal calculations. This ensures
- * accurate representation when calculating monetary values, incase calculation features are 
- * needed in the future.
+ * 
  * @author Juan Moreno, Javier Ontiveros
  * @version 1.0.3
  */
@@ -80,7 +78,7 @@ public class CSVReader {
             FileWriter fw = new FileWriter(updatedFile);
             BufferedWriter writer = new BufferedWriter(fw);
 
-            // Write the header line
+             // Write the header line
             writer.write("Identification Number,First Name,Last Name,Date of Birth,Address,Phone Number,Checking Account Number,Checking Starting Balance,Savings Account Number,Savings Starting Balance,Credit Account Number,Credit Max,Credit Starting Balance");
             writer.newLine();
 
@@ -134,10 +132,5 @@ public class CSVReader {
             e.printStackTrace();
             // Handle the file writing exception as needed
         }
-    }
-
-    public static void logging(String log){
-        //TODO: create file 
-        // Example of dynamic : file.append(log);
     }
 }
