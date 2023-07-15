@@ -34,39 +34,37 @@ public class Customer extends Person {
     }
 
     public static void customerUI(ArrayList<Account> users){
-        Scanner scanner = new Scanner(System.in); 
-
-        System.out.println("Please enter first and last name");
-        String nameInput = scanner.nextLine();  // Read user input
-
         boolean counter = true;
         while(counter){
+            Scanner scanner = new Scanner(System.in); 
+            System.out.println("Please enter first and last name");
+            String nameInput = scanner.nextLine();  // Read user input
 
             for (Account user : users) {
                 String name = user.customer.firstName +" "+ user.customer.lastName;
                 if(name.equals(nameInput)){
                     System.out.println("Welcome " + name);
                     System.out.println("Please Select an Option:");
-                    System.out.println("A) Checking.  B) Credit.  C) Saving.");
+                    System.out.println("A) Checking.  B) Credit.  C) Saving. D) Transfer. E) Pay To");
                     String accountChoiceInput = scanner.nextLine();  // Read user input
                         switch(accountChoiceInput) {
-                            case "A":
-                                Checking.checkingUI();;
+                            case "A": 
+                                user.checking.checkingUI();;
                                 break;
                             case "B":
                                 Credit.creditUI();
                                 break;
                             case "C":
-                                Saving.savingUI();
-                                break;                           
+                                user.saving.savingUI();
+                                break;   
+                            case "D":
+                                user.checking.transferMoney();
+                            case "E":
+                                user.checking.PayMoneyTo();
                           default:
                             // code block
                             System.out.println("Wrong Selection");
                         }
-                    break;
-                }
-                else {
-                    System.out.println("Account does not exist, Try Again");
                     break;
                 }
             }

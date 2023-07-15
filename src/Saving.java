@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.util.Scanner;
 /**
  * The Saving class represents a savings account that extends the Account class.
  * It contains information about the savings account number and the starting balance of the savings account.
@@ -6,8 +7,8 @@ import java.math.BigDecimal;
  * @version 1.0.0
  */
 public class Saving extends Account {
-    private int savingsAccountNumber;
-    private double savingsStartingBalance;
+    protected int savingsAccountNumber;
+    protected double savingsStartingBalance;
 
     public Saving(int savingsAccountNumber, double savingsStartingBalance){
         setSavingsAccountNumber(savingsAccountNumber);
@@ -51,7 +52,39 @@ public class Saving extends Account {
         this.savingsStartingBalance = savingsStartingBalance;
     }
 
-    public static void savingUI(){
-        
+    public void checkSavings(){
+        System.out.println("You have "+this.savingsStartingBalance+" in your savings");
     }
+
+    public void addSavings(double amount){
+        this.savingsStartingBalance += amount;
+    }
+
+    public void savingUI(){
+        boolean quit = true;
+        while(quit){
+            Scanner scanner = new Scanner(System.in); 
+            System.out.println("A) Check Savings. B) Add Savings. or type EXIT");
+            String savingChoice = scanner.nextLine();  // Read user input
+                switch(savingChoice) {
+                    case "A": 
+                        this.checkSavings();
+                        break;
+                    case "B":
+                        System.out.println("How much would you like to add to savings?");
+                        double amount = Double.parseDouble(scanner.nextLine());
+                        this.addSavings(amount);
+                        break;
+                    case "EXIT":
+                        quit = true;
+                        break;   
+                  default:
+                    // code block
+                    System.out.println("Wrong Selection");
+                }
+            break;
+        }
+
+    }
+    
 }

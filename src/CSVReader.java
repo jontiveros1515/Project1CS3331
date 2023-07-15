@@ -73,48 +73,48 @@ public class CSVReader {
      *
      * @param users The list of Account objects containing the updated bank user information.
      */
-    public static void updateUsers(ArrayList<Account> users) {
-        File updatedFile = new File("src/Updated Bank Users.csv");
+    // public static void updateUsers(ArrayList<Account> users) {
+    //     File updatedFile = new File("src/Updated Bank Users.csv");
 
-        try {
-            FileWriter fw = new FileWriter(updatedFile);
-            BufferedWriter writer = new BufferedWriter(fw);
+    //     try {
+    //         FileWriter fw = new FileWriter(updatedFile);
+    //         BufferedWriter writer = new BufferedWriter(fw);
 
-            // Write the header line
-            writer.write("Identification Number,First Name,Last Name,Date of Birth,Address,Phone Number,Checking Account Number,Checking Starting Balance,Savings Account Number,Savings Starting Balance,Credit Account Number,Credit Max,Credit Starting Balance");
-            writer.newLine();
+    //         // Write the header line
+    //         writer.write("Identification Number,First Name,Last Name,Date of Birth,Address,Phone Number,Checking Account Number,Checking Starting Balance,Savings Account Number,Savings Starting Balance,Credit Account Number,Credit Max,Credit Starting Balance");
+    //         writer.newLine();
 
-            // Write the user information
-            for (Account user : users) {
-                Customer customer = user.getCustomer();
-                Checking checking = user.getChecking();
-                Saving saving = user.getSaving();
-                Credit credit = user.getCredit();
+    //         // Write the user information
+    //         for (Account user : users) {
+    //             Customer customer = user.getCustomer();
+    //             Checking checking = user.getChecking();
+    //             Saving saving = user.getSaving();
+    //             Credit credit = user.getCredit();
 
-                String line = customer.getIdentificationNumber() + ","
-                    + customer.getFirstName() + ","
-                    + customer.getLastName() + ","
-                    + customer.getDateOfBirth() + ","
-                    + customer.getAddress() + ","
-                    + customer.getPhoneNumber() + ","
-                    + checking.getCheckingAccountNumber() + ","
-                    + checking.getCheckingStartingBalance() + ","
-                    + saving.getSavingsAccountNumber() + ","
-                    + saving.getSavingsStartingBalance() + ","
-                    + credit.getCreditAccountNumber() + ","
-                    + credit.getCreditMax() + ","
-                    + credit.getCreditStartingBalance();
+    //             String line = customer.getIdentificationNumber() + ","
+    //                 + customer.getFirstName() + ","
+    //                 + customer.getLastName() + ","
+    //                 + customer.getDateOfBirth() + ","
+    //                 + customer.getAddress() + ","
+    //                 + customer.getPhoneNumber() + ","
+    //                 + checking.getCheckingAccountNumber() + ","
+    //                 + checking.getCheckingStartingBalance() + ","
+    //                 + saving.getSavingsAccountNumber() + ","
+    //                 + saving.getSavingsStartingBalance() + ","
+    //                 + credit.getCreditAccountNumber() + ","
+    //                 + credit.getCreditMax() + ","
+    //                 + credit.getCreditStartingBalance();
 
-                writer.write(line);
-                writer.newLine();
-            }
+    //             writer.write(line);
+    //             writer.newLine();
+    //         }
 
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle the file writing exception as needed
-        }
-    }
+    //         writer.close();
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //         // Handle the file writing exception as needed
+    //     }
+    // }
     
     /**
      * Writes the log string to a text file named "TextLog.txt".
@@ -138,5 +138,11 @@ public class CSVReader {
 
     public static void main(String[] args) {
         
+    } 
+
+
+    public static void logging(String log){
+        //TODO: create file 
+        // Example of dynamic : file.append(log);
     }
 }

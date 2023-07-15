@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * The Account class represents a bank account associated with a customer.
  * It contains information about the customer, checking account, savings account, and credit account.
@@ -9,6 +11,7 @@ public class Account {
     protected Checking checking;
     protected Saving saving;
     protected Credit credit;
+    protected static ArrayList<Account> users = new ArrayList<>();
 
     public Account(){
 
@@ -51,6 +54,14 @@ public class Account {
 
     public void setSaving(Saving saving) {
         this.saving = saving;
+    }
+    
+    public static void setUsers(){
+        users = CSVReader.getUsers();
+    }
+
+    public static ArrayList<Account> getUsers(){
+        return users;
     }
 
 }

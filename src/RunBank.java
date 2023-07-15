@@ -9,11 +9,14 @@ import java.util.Scanner;  // Import the Scanner class
 public class RunBank {
 
     public static void main(String[] args) throws Exception {
+      Account.setUsers();
 
-     ArrayList<Account> users = CSVReader.getUsers();
+     ArrayList<Account> users = Account.getUsers();
     //  for (Account user : users) {
     //    System.out.println(user.customer.firstName);
     //  }
+      boolean quit = false;
+      while(!quit){
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
         System.out.println("A: Individual Person");
         System.out.println("B: Bank Account Manager");
@@ -30,12 +33,16 @@ public class RunBank {
             // code block
             bankManagerUI();
             break;
+          case "Exit":
+            quit = true;
           default:
             // code block
             System.out.println("Wrong Selection");
         }
 
         scanner.close();
+      }
+      // CSVReader.updateUsers(users);
     }
 
     public static void bankManagerUI(){
