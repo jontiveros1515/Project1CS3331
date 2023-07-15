@@ -1,4 +1,3 @@
-import java.math.BigDecimal;
 import java.util.Scanner;
 /**
  * The Saving class represents a savings account that extends the Account class.
