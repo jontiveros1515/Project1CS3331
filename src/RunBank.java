@@ -37,7 +37,7 @@ public class RunBank {
         }
 
       }
-      // CSVReader.updateUsers(users);
+      CSVReader.updateUsers(users);
     }
 
     public static void bankManagerUI(){
