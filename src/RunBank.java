@@ -12,18 +12,14 @@ public class RunBank {
       Account.setUsers();
 
      ArrayList<Account> users = Account.getUsers();
-    //  for (Account user : users) {
-    //    System.out.println(user.customer.firstName);
-    //  }
       boolean quit = false;
       while(!quit){
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
         System.out.println("A: Individual Person");
         System.out.println("B: Bank Account Manager");
+        System.out.println("Or you can Type EXIT");
 
         String accountChoice = scanner.nextLine();  // Read user input
-        System.out.println(accountChoice);  // Output user input fjsdjfjd
-
 
         switch(accountChoice) {
           case "A":
@@ -33,14 +29,13 @@ public class RunBank {
             // code block
             bankManagerUI();
             break;
-          case "Exit":
+          case "EXIT":
             quit = true;
+            break;
           default:
-            // code block
             System.out.println("Wrong Selection");
         }
 
-        scanner.close();
       }
       // CSVReader.updateUsers(users);
     }

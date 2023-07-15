@@ -61,8 +61,8 @@ public class Saving extends Account {
     }
 
     public void savingUI(){
-        boolean quit = true;
-        while(quit){
+        boolean quit = false;
+        while(!quit){
             Scanner scanner = new Scanner(System.in); 
             System.out.println("A) Check Savings. B) Add Savings. or type EXIT");
             String savingChoice = scanner.nextLine();  // Read user input
@@ -82,7 +82,6 @@ public class Saving extends Account {
                     // code block
                     System.out.println("Wrong Selection");
                 }
-            break;
         }
 
     }

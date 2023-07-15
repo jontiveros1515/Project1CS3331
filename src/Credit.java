@@ -16,7 +16,7 @@ public class Credit extends Account{
     public Credit(int creditAccountNumber, int creditMax, double creditStartingBalance){
         setCreditAccountNumber(creditAccountNumber);
         setCreditMax(creditMax);
-        setCreditStartingBalance(getCreditStartingBalance());
+        setCreditStartingBalance(creditStartingBalance);
     }
     
     /**
@@ -73,29 +73,44 @@ public class Credit extends Account{
         this.creditStartingBalance = creditStartingBalance;
     }
 
-    public static void creditUI(){
+    public void creditBalance(){
+        double balance = this.creditMax + this.creditStartingBalance;
+        System.out.println("Your limit is "+ this.creditMax);
+        System.out.println("current credit line is "+ balance);
+    }
+
+    public void creditPaid(double amount){
+        double balance = this.creditStartingBalance + amount;
+        if(balance <= this.creditMax){
+            System.out.println("you have paid "+ amount);
+            this.creditStartingBalance += amount;
+            System.out.println("You now owe "+ this.creditStartingBalance);
+        }
+    }
+
+    public void creditUI(){
         boolean quit = true;
-        // while(quit){
-        //     Scanner scanner = new Scanner(System.in); 
-        //     System.out.println("A) Credit Balance B) Pay Balance or type EXIT");
-        //     String savingChoice = scanner.nextLine();  // Read user input
-        //         switch(savingChoice) {
-        //             case "A": 
-        //                 this.checkSavings();
-        //                 break;
-        //             case "B":
-        //                 System.out.println("How much would you like to add to savings?");
-        //                 double amount = Double.parseDouble(scanner.nextLine());
-        //                 this.addSavings(amount);
-        //                 break;
-        //             case "EXIT":
-        //                 quit = true;
-        //                 break;   
-        //           default:
-        //             // code block
-        //             System.out.println("Wrong Selection");
-        //         }
-        //     break;
-        // }
+        while(quit){
+            Scanner scanner = new Scanner(System.in); 
+            System.out.println("A) Credit Balance B) Pay Balance or type EXIT");
+            String savingChoice = scanner.nextLine();  // Read user input
+                switch(savingChoice) {
+                    case "A": 
+                        this.creditBalance();
+                        break;
+                    case "B":
+                        System.out.println("You currently owe"+ this.creditStartingBalance);
+                        System.out.println("How much would you like to pay off?");
+                        double amount = Double.parseDouble(scanner.nextLine());
+                        this.creditPaid(amount);
+                        break;
+                    case "EXIT":
+                        quit = true;
+                        break;   
+                  default:
+                    // code block
+                    System.out.println("Wrong Selection");
+                }
+        }
     }
 }
