@@ -27,7 +27,7 @@ public class RunBank {
             break;
           case "B":
             // code block
-            bankManagerUI();
+            Account.bankManagerUI();
             break;
           case "EXIT":
             quit = true;
