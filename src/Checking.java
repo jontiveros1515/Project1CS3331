@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 /**
  * The Checking class represents a checking account that extends the Account class.
@@ -185,39 +186,47 @@ public class Checking extends Account {
      * Displays the checking account user interface.
      * The user can choose options to check balance, withdraw, deposit, or exit.
      */
-    public  void checkingUI(){
+    public void checkingUI() {
         try (Scanner scanner = new Scanner(System.in)) {
             boolean quit = false;
-            while(!quit){
+            while (!quit) {
                 System.out.println("A) Balance. B) Withdraw. C) Deposit. or type EXIT");
                 String input = scanner.nextLine();
-
-                switch(input) {
+    
+                switch (input) {
                     case "A":
                         double balance = getUserBalance();
                         System.out.println("\n Your Balance is: " + balance);
                         break;
                     case "B":
                         System.out.println("Enter withdraw Amount:");
-                        double withdrawAmount = Double.parseDouble(scanner.nextLine());
-                        withdrawAccount(this.checkingStartingBalance,withdrawAmount);
+                        try {
+                            double withdrawAmount = scanner.nextDouble();
+                            scanner.nextLine(); // Consume the newline character after reading the double
+                            withdrawAccount(this.checkingStartingBalance, withdrawAmount);
+                        } catch (InputMismatchException e) {
+                            System.out.println("Invalid input. Please enter a valid number.");
+                            scanner.nextLine(); // Clear the input buffer
+                        }
                         break;
                     case "C":
                         System.out.println("Enter deposit Amount:");
-                        double depositAmount = Double.parseDouble(scanner.nextLine());
-                        depositAccount(this.checkingStartingBalance,depositAmount);
-                        break;   
+                        try {
+                            double depositAmount = scanner.nextDouble();
+                            scanner.nextLine(); // Consume the newline character after reading the double
+                            depositAccount(this.checkingStartingBalance, depositAmount);
+                        } catch (InputMismatchException e) {
+                            System.out.println("Invalid input. Please enter a valid number.");
+                            scanner.nextLine(); // Clear the input buffer
+                        }
+                        break;
                     case "EXIT":
                         quit = true;
-                        break;                        
-                  default:
-                    // code block
-                    System.out.println("Wrong Selection");
+                        break;
+                    default:
+                        System.out.println("Wrong Selection");
                 }
             }
-        } catch (NumberFormatException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
     }
 }
