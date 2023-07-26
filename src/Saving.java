@@ -65,28 +65,27 @@ public class Saving extends Account {
             try (Scanner scanner = new Scanner(System.in)) {
                 System.out.println("A) Check Savings. B) Add Savings. or type EXIT");
                 String savingChoice = scanner.nextLine();  // Read user input
-                    switch(savingChoice) {
-                        case "A": 
-                            this.checkSavings();
-                            break;
-                        case "B":
-                            System.out.println("How much would you like to add to savings?");
-                            double amount = Double.parseDouble(scanner.nextLine());
-                            this.addSavings(amount);
-                            break;
-                        case "EXIT":
-                            quit = true;
-                            break;   
-                      default:
-                        // code block
+
+                switch (savingChoice) {
+                    case "A":
+                        this.checkSavings();
+                        break;
+                    case "B":
+                        System.out.println("How much would you like to add to savings?");
+                        double amount = Double.parseDouble(scanner.nextLine());
+                        this.addSavings(amount);
+                        break;
+                    case "EXIT":
+                        quit = true;
+                        break;
+                    default:
                         System.out.println("Wrong Selection");
-                    }
+                        break;
+                }
             } catch (NumberFormatException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                // Handle the exception here, e.g., print an error message
+                System.out.println("Error: Invalid number format. Please enter a valid amount.");
             }
         }
-
     }
-    
 }
