@@ -218,4 +218,33 @@ public class CSVReader {
         Date date = new Date();
         return formatter.format(date);
     }
+
+    public static ArrayList<Transaction> readTransactions(String fileName) {
+        ArrayList<Transaction> transactions = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                String fromFirstName = data[0].trim();
+                String fromLastName = data[1].trim();
+                String fromWhere = data[2].trim();
+                String action = data[3].trim();
+                String toFirstName = data[4].trim();
+                String toLastName = data[5].trim();
+                String toWhere = data[6].trim();
+                double actionAmount = Double.parseDouble(data[7].trim());
+
+                Transaction transaction = new Transaction(fromFirstName, fromLastName, fromWhere, action,
+                        toFirstName, toLastName, toWhere, actionAmount);
+
+                transactions.add(transaction);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the file reading exception as needed
+        }
+
+        return transactions;
+    }
 }
