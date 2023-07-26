@@ -88,32 +88,32 @@ public class Credit extends Account{
         }
     }
 
-    public void creditUI(){
-        boolean quit = true;
-        while(quit){
+    public void creditUI() {
+        boolean quit = false;
+        while (!quit) {
             try (Scanner scanner = new Scanner(System.in)) {
                 System.out.println("A) Credit Balance B) Pay Balance or type EXIT");
                 String savingChoice = scanner.nextLine();  // Read user input
-                    switch(savingChoice) {
-                        case "A": 
-                            this.creditBalance();
-                            break;
-                        case "B":
-                            System.out.println("You currently owe"+ this.creditStartingBalance);
-                            System.out.println("How much would you like to pay off?");
+                switch (savingChoice) {
+                    case "A":
+                        this.creditBalance();
+                        break;
+                    case "B":
+                        System.out.println("You currently owe " + this.creditStartingBalance);
+                        System.out.println("How much would you like to pay off?");
+                        try {
                             double amount = Double.parseDouble(scanner.nextLine());
                             this.creditPaid(amount);
-                            break;
-                        case "EXIT":
-                            quit = true;
-                            break;   
-                      default:
-                        // code block
+                        } catch (NumberFormatException e) {
+                            System.out.println("Invalid input. Please enter a valid number.");
+                        }
+                        break;
+                    case "EXIT":
+                        quit = true;
+                        break;
+                    default:
                         System.out.println("Wrong Selection");
-                    }
-            } catch (NumberFormatException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                }
             }
         }
     }
