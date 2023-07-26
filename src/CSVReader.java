@@ -76,7 +76,7 @@ public class CSVReader {
                 double creditStartingBalance = Double.parseDouble(data[12]);
                 Credit credit = new Credit(creditAccountNumber, creditMax, creditStartingBalance);
 
-                Person person = new Person(firstName, lastName, dateOfBirth, address, phoneNumber)
+                Person person = new Person(firstName, lastName, dateOfBirth, address, phoneNumber);
                 Customer customer = new Customer(person, identificationNumber);
                 Account user = new Account(customer, checking, saving, credit);
 
