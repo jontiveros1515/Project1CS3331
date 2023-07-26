@@ -108,41 +108,42 @@ public class Checking extends Account {
      * Pays money from the checking account to another account.
      * The user can choose the recipient and the amount to pay.
      */
-    public void PayMoneyTo(){
+    public void PayMoneyTo() {
         boolean quit = false;
         ArrayList<Account> users = Account.getUsers();
-        while(!quit){      
+        while (!quit) {
             double userBalance = this.getUserBalance();
-            System.out.println("Your balance is currently "+ userBalance);
+            System.out.println("Your balance is currently " + userBalance);
             try (Scanner scanner = new Scanner(System.in)) {
-                System.out.println("who would you like to Pay to? or Type EXIT");
+                System.out.println("Who would you like to Pay to? or Type EXIT");
                 String input = scanner.nextLine();
-                if(input.equals("EXIT")){
+                if (input.equals("EXIT")) {
                     quit = true;
                     break;
                 }
                 for (Account user : users) {
-                    if(input.equals(user.customer.firstName+" "+user.customer.lastName)){
+                    if (input.equals(user.customer.firstName + " " + user.customer.lastName)) {
                         System.out.println("How much would you like to Pay?");
                         double amount = Double.parseDouble(scanner.nextLine());
-                        if(this.checkingStartingBalance < amount){
-                            System.out.println("this amount is not valid");
+                        if (this.checkingStartingBalance < amount) {
+                            System.out.println("This amount is not valid");
                             break;
                         }
                         this.checkingStartingBalance -= amount;
                         user.checking.checkingStartingBalance += amount;
-                        System.out.println("Payment succesful to " + input);
+                        System.out.println("Payment successful to " + input);
+    
+                        // Log the transaction
+                        String log = "Payment: $" + amount + " from checking account to " + input + "'s checking account.";
+                        CSVReader.textLog(log); // Call the textLog method from the CSVReader class to log the transaction
                     }
                 }
             } catch (NumberFormatException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
+                // Handle any number format exception if necessary
             }
-           
         }
-
     }
-
 
     /**
      * Retrieves the checking account number.
