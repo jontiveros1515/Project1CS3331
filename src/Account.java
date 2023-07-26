@@ -217,4 +217,66 @@ public class Account {
             }
         }
     }
+    public void pay(Account recipientAccount, double amount) {
+        if (checking.getBalance() >= amount) {
+            checking.withdraw(amount);
+            recipientAccount.deposit(amount);
+            System.out.println("Payment of $" + amount + " was successful.");
+        } else {
+            System.out.println("Payment failed. Insufficient balance.");
+        }
+    }
+
+    /**
+     * Processes a transaction to transfer funds between accounts.
+     *
+     * @param fromAccount The account to transfer from.
+     * @param toAccount   The account to transfer to.
+     * @param amount      The amount to transfer.
+     */
+    public void transfer(Account fromAccount, Account toAccount, double amount) {
+        if (fromAccount.checking.getBalance() >= amount) {
+            fromAccount.checking.withdraw(amount);
+            toAccount.deposit(amount);
+            System.out.println("Transfer of $" + amount + " was successful.");
+        } else {
+            System.out.println("Transfer failed. Insufficient balance.");
+        }
+    }
+
+    /**
+     * Processes an inquiry transaction on the specified account.
+     *
+     * @param account The account to inquire about.
+     */
+    public void inquire(Account account) {
+        double balance = account.getChecking().getBalance();
+        System.out.println("Balance in " + account.getCustomer().getFirstName() + "'s checking account: $" + balance);
+    }
+
+    /**
+     * Processes a withdrawal transaction from the specified account.
+     *
+     * @param account The account to withdraw from.
+     * @param amount  The amount to withdraw.
+     */
+    public void withdraw(Account account, double amount) {
+        if (account.getChecking().getBalance() >= amount) {
+            account.getChecking().withdraw(amount);
+            System.out.println("Withdrawal of $" + amount + " was successful.");
+        } else {
+            System.out.println("Withdrawal failed. Insufficient balance.");
+        }
+    }
+
+    /**
+     * Processes a deposit transaction to the specified account.
+     *
+     * @param account The account to deposit into.
+     * @param amount  The amount to deposit.
+     */
+    public void deposit(Account account, double amount) {
+        account.getChecking().deposit(amount);
+        System.out.println("Deposit of $" + amount + " was successful.");
+    }
 }
