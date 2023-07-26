@@ -74,25 +74,29 @@ public class Checking extends Account {
         while(!quit){      
             double userBalance = this.getUserBalance();
             System.out.println("Your balance is currently "+ userBalance);
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("who would you like to trasnfer to? or Type EXIT");
-            String input = scanner.nextLine();
-            if(input.equals("EXIT")){
-                quit = true;
-                break;
-            }
-            for (Account user : users) {
-                if(input.equals(user.customer.firstName+" "+user.customer.lastName)){
-                    System.out.println("How much would you like to transfer?");
-                    double amount = Double.parseDouble(scanner.nextLine());
-                    if(this.checkingStartingBalance < amount){
-                        System.out.println("this amount is not valid");
-                        break;
-                    }
-                    this.checkingStartingBalance -= amount;
-                    user.checking.checkingStartingBalance += amount;
-                    System.out.println("Transfered succesful to " + input);
+            try (Scanner scanner = new Scanner(System.in)) {
+                System.out.println("who would you like to trasnfer to? or Type EXIT");
+                String input = scanner.nextLine();
+                if(input.equals("EXIT")){
+                    quit = true;
+                    break;
                 }
+                for (Account user : users) {
+                    if(input.equals(user.customer.firstName+" "+user.customer.lastName)){
+                        System.out.println("How much would you like to transfer?");
+                        double amount = Double.parseDouble(scanner.nextLine());
+                        if(this.checkingStartingBalance < amount){
+                            System.out.println("this amount is not valid");
+                            break;
+                        }
+                        this.checkingStartingBalance -= amount;
+                        user.checking.checkingStartingBalance += amount;
+                        System.out.println("Transfered succesful to " + input);
+                    }
+                }
+            } catch (NumberFormatException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
            
         }
@@ -109,25 +113,29 @@ public class Checking extends Account {
         while(!quit){      
             double userBalance = this.getUserBalance();
             System.out.println("Your balance is currently "+ userBalance);
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("who would you like to Pay to? or Type EXIT");
-            String input = scanner.nextLine();
-            if(input.equals("EXIT")){
-                quit = true;
-                break;
-            }
-            for (Account user : users) {
-                if(input.equals(user.customer.firstName+" "+user.customer.lastName)){
-                    System.out.println("How much would you like to Pay?");
-                    double amount = Double.parseDouble(scanner.nextLine());
-                    if(this.checkingStartingBalance < amount){
-                        System.out.println("this amount is not valid");
-                        break;
-                    }
-                    this.checkingStartingBalance -= amount;
-                    user.checking.checkingStartingBalance += amount;
-                    System.out.println("Payment succesful to " + input);
+            try (Scanner scanner = new Scanner(System.in)) {
+                System.out.println("who would you like to Pay to? or Type EXIT");
+                String input = scanner.nextLine();
+                if(input.equals("EXIT")){
+                    quit = true;
+                    break;
                 }
+                for (Account user : users) {
+                    if(input.equals(user.customer.firstName+" "+user.customer.lastName)){
+                        System.out.println("How much would you like to Pay?");
+                        double amount = Double.parseDouble(scanner.nextLine());
+                        if(this.checkingStartingBalance < amount){
+                            System.out.println("this amount is not valid");
+                            break;
+                        }
+                        this.checkingStartingBalance -= amount;
+                        user.checking.checkingStartingBalance += amount;
+                        System.out.println("Payment succesful to " + input);
+                    }
+                }
+            } catch (NumberFormatException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
            
         }
@@ -176,34 +184,38 @@ public class Checking extends Account {
      * The user can choose options to check balance, withdraw, deposit, or exit.
      */
     public  void checkingUI(){
-        Scanner scanner = new Scanner(System.in);
-        boolean quit = false;
-        while(!quit){
-            System.out.println("A) Balance. B) Withdraw. C) Deposit. or type EXIT");
-            String input = scanner.nextLine();
+        try (Scanner scanner = new Scanner(System.in)) {
+            boolean quit = false;
+            while(!quit){
+                System.out.println("A) Balance. B) Withdraw. C) Deposit. or type EXIT");
+                String input = scanner.nextLine();
 
-            switch(input) {
-                case "A":
-                    double balance = getUserBalance();
-                    System.out.println("\n Your Balance is: " + balance);
-                    break;
-                case "B":
-                    System.out.println("Enter withdraw Amount:");
-                    double withdrawAmount = Double.parseDouble(scanner.nextLine());
-                    withdrawAccount(this.checkingStartingBalance,withdrawAmount);
-                    break;
-                case "C":
-                    System.out.println("Enter deposit Amount:");
-                    double depositAmount = Double.parseDouble(scanner.nextLine());
-                    depositAccount(this.checkingStartingBalance,depositAmount);
-                    break;   
-                case "EXIT":
-                    quit = true;
-                    break;                        
-              default:
-                // code block
-                System.out.println("Wrong Selection");
+                switch(input) {
+                    case "A":
+                        double balance = getUserBalance();
+                        System.out.println("\n Your Balance is: " + balance);
+                        break;
+                    case "B":
+                        System.out.println("Enter withdraw Amount:");
+                        double withdrawAmount = Double.parseDouble(scanner.nextLine());
+                        withdrawAccount(this.checkingStartingBalance,withdrawAmount);
+                        break;
+                    case "C":
+                        System.out.println("Enter deposit Amount:");
+                        double depositAmount = Double.parseDouble(scanner.nextLine());
+                        depositAccount(this.checkingStartingBalance,depositAmount);
+                        break;   
+                    case "EXIT":
+                        quit = true;
+                        break;                        
+                  default:
+                    // code block
+                    System.out.println("Wrong Selection");
+                }
             }
+        } catch (NumberFormatException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
     }
 }

@@ -20,25 +20,26 @@ public class RunBank {
      ArrayList<Account> users = Account.getUsers();
       boolean quit = false;
       while(!quit){
-        Scanner scanner = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("A: Individual Person");
-        System.out.println("B: Bank Account Manager");
-        System.out.println("Or you can Type EXIT");
+        try (Scanner scanner = new Scanner(System.in)) {
+          System.out.println("A: Individual Person");
+          System.out.println("B: Bank Account Manager");
+          System.out.println("Or you can Type EXIT");
 
-        String accountChoice = scanner.nextLine();  // Read user input
+          String accountChoice = scanner.nextLine();  // Read user input
 
-        switch(accountChoice) {
-          case "A":
-            Customer.customerUI(users);
-            break;
-          case "B":
-            BankManger.bankManagerUI();// Call the bank manager UI method
-            break;
-          case "EXIT":
-            quit = true;
-            break;
-          default:
-            System.out.println("Wrong Selection");
+          switch(accountChoice) {
+            case "A":
+              Customer.customerUI(users);
+              break;
+            case "B":
+              BankManager.bankManagerUI();// Call the bank manager UI method
+              break;
+            case "EXIT":
+              quit = true;
+              break;
+            default:
+              System.out.println("Wrong Selection");
+          }
         }
 
       }
