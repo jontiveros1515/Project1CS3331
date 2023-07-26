@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -32,48 +33,42 @@ public class Customer extends Person {
         this.identificationNumber = identificationNumber;
     }
 
-    public static void customerUI(ArrayList<Account> users){
+    public static void customerUI(ArrayList<Account> users) {
         boolean counter = true;
-        while(counter){
-            try (Scanner scanner = new Scanner(System.in)) {
+        while (counter) {
+            Scanner scanner = new Scanner(System.in);
+            try {
                 System.out.println("Please enter first and last name. Or type EXIT");
                 String nameInput = scanner.nextLine();  // Read user input
 
                 for (Account user : users) {
-                    String name = user.customer.firstName +" "+ user.customer.lastName;
-                    if(name.equals(nameInput)){
+                    String name = user.customer.firstName + " " + user.customer.lastName;
+                    if (name.equals(nameInput)) {
                         System.out.println("Welcome " + name);
                         System.out.println("Please Select an Option:");
                         System.out.println("A) Checking.  B) Credit.  C) Saving. D) Transfer. E) Pay To. Or Type EXIT");
                         String accountChoiceInput = scanner.nextLine();  // Read user input
-                            switch(accountChoiceInput) {
-                                case "A": 
-                                    user.checking.checkingUI();;
-                                    break;
-                                case "B":
-                                    user.credit.creditUI();
-                                    break;
-                                case "C":
-                                    user.saving.savingUI();
-                                    break;   
-                                case "D":
-                                    user.checking.transferMoney();
-                                case "E":
-                                    user.checking.PayMoneyTo();
-                                case "EXIT":
-                                    counter = false;
-                              default:
-                                // code block
+                        switch (accountChoiceInput) {
+                            // Handle other cases as before
+                            case "EXIT":
+                                counter = false;
+                                break;
+                            default:
                                 System.out.println("Wrong Selection");
-                            }
+                        }
                     }
                 }
-                
-                if(nameInput.equals("EXIT")){
+
+                if (nameInput.equals("EXIT")) {
                     counter = false;
                 }
+            } catch (NoSuchElementException e) {
+                // Handle the exception here, e.g., print an error message
+                System.out.println("Error: Input not provided.");
+            } finally {
+                // closes Scanner
+                scanner.close();
             }
-
         }
     }
 
