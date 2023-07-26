@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Scanner;  // Import the Scanner class
+import java.util.Scanner;
 /**
  * The Checking class represents a checking account that extends the Account class.
  * It contains information about the checking account number and the starting balance of the checking account.
@@ -8,6 +8,12 @@ import java.util.Scanner;  // Import the Scanner class
  */
 public class RunBank {
 
+    /**
+     * The main method that starts the banking application.
+     *
+     * @param args Command-line arguments (not used in this application).
+     * @throws Exception If there is an issue with reading or writing the CSV file.
+     */
     public static void main(String[] args) throws Exception {
       Account.setUsers();
 
@@ -26,8 +32,7 @@ public class RunBank {
             Customer.customerUI(users);
             break;
           case "B":
-            // code block
-            Account.bankManagerUI();
+            BankManger.bankManagerUI();// Call the bank manager UI method
             break;
           case "EXIT":
             quit = true;
@@ -39,18 +44,4 @@ public class RunBank {
       }
       CSVReader.updateUsers(users);
     }
-
-    public static void bankManagerUI(){
-      
-    }
 }
-
-// a. Inquire about a balance.
-// b. Deposit money to an account.
-// c. Withdraw money from an account.
-// d. Transfer money between accounts.
-// e. Pay someone (i.e., Mickey pays Donald).
-// f. Pick an informative response for all the mentioned tasks (i.e., Deposit
-// of $XX successful, etc.)
-// i. Credit accounts should not be able to accept more than the
-// balance
