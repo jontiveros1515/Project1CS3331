@@ -51,16 +51,16 @@ public class Checking extends Account {
      * @param withdraw                The amount to withdraw.
      */
     public void withdrawAccount(double checkingStartingBalance, double withdraw){
-        //TODO: withdraw
         if (withdraw <= checkingStartingBalance){
             this.checkingStartingBalance -= withdraw;
             System.out.println(withdraw + " has been withdrawn");
+            // Log the transaction
+            String log = "Withdrawal: $" + withdraw + " from checking account. New balance: $" + this.checkingStartingBalance;
+            CSVReader.textLog(log); // Call the textLog method from the CSVReader class to log the transaction
         }
         else {
             System.out.println("invalid amount, amount must be less than " + checkingStartingBalance);
         }
-        //TODO: log information
-        //random
     }
 
     /**
