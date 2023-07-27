@@ -1,3 +1,4 @@
+package CS3331LabProject;
 /**
  * The Person class represents a person with personal information such as their first name,
  * last name, date of birth, and phone number.

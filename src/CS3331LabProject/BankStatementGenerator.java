@@ -1,7 +1,10 @@
+package CS3331LabProject;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import CS3331LabProject.Account;
 
 /**
  * The BankStatementGenerator class generates a bank statement file for a specific user.

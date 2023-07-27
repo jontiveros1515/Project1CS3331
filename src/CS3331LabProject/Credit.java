@@ -1,3 +1,4 @@
+package CS3331LabProject;
 import java.util.Scanner;
 
 /**

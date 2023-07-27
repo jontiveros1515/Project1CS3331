@@ -1,3 +1,4 @@
+package CS3331LabProject;
 /*
  * The Transaction class represents a single transaction record from the Transaction.csv
  * file. It has getter methods to retrieve the transaction details.

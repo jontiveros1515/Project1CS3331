@@ -1,4 +1,7 @@
+package CS3331LabProject;
 import java.util.Scanner;
+
+import CS3331LabProject.Account;
 
 /**
  * The BankManager class provides functionality for a bank manager to interact with the bank's accounts.
