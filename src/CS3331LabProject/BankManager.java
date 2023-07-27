@@ -23,27 +23,30 @@ public class BankManager {
     public static void bankManagerUI() {
         boolean quit = false;
         while (!quit) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("A) Inquire account by name. B) Inquire account by type/number or type EXIT");
-            String choice = scanner.nextLine();  // Read user input
+            try (Scanner scanner = new Scanner(System.in)) {
+                System.out.println("A) Inquire account by name. B) Inquire account by type/number or type EXIT");
+                String choice = scanner.nextLine();  // Read user input
 
-            switch (choice) {
-                case "A":
-                    System.out.println("What is the account Name?");
-                    String name = scanner.nextLine();  // Read user input
-                    Account.getUserAccountByName(name);
-                    break;
-                case "B":
-                    System.out.println("What is the account number?");
-                    int id = Integer.parseInt(scanner.nextLine());
-                    Account.getUserAccountByAccount(id);
-                    break;
-                case "EXIT":
-                    quit = true;
-                    break;
-                default:
-                    System.out.println("Wrong Selection");
-                    break;
+                switch (choice) {
+                    case "A":
+                        System.out.println("What is the account Name?");
+                        String name = scanner.nextLine();  // Read user input
+                        Account.getUserAccountByName(name);
+                        break;
+                    case "B":
+                        System.out.println("What is the account number?");
+                        int id = Integer.parseInt(scanner.nextLine());
+                        Account.getUserAccountByAccount(id);
+                        break;
+                    case "EXIT":
+                        quit = true;
+                        break;
+                    default:
+                        System.out.println("Wrong Selection");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
             }
         }
     }
