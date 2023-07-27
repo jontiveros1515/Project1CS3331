@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import CS3331LabProject.Account;
-
 /**
  * The BankStatementGenerator class generates a bank statement file for a specific user.
  * It includes all the information about the user and their transactions during a session of running the code.
