@@ -89,8 +89,8 @@ public class Credit extends Account{
     }
 
     public void creditUI(){
-        boolean quit = true;
-        while(quit){
+        boolean quit = false;
+        while(!quit){
             Scanner scanner = new Scanner(System.in); 
             System.out.println("A) Credit Balance B) Pay Balance or type EXIT");
             String savingChoice = scanner.nextLine();  // Read user input

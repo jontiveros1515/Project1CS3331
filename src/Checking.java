@@ -15,16 +15,19 @@ public class Checking extends Account {
         return this.checkingStartingBalance;
     }
 
-    public void depositAccount(double checkingStartingBalance, double deposit){ 
+    public void depositAccount(double checkingStartingBalance, double deposit, String name){ 
         this.checkingStartingBalance = checkingStartingBalance + deposit; 
         System.out.println(deposit + " has been deposited");
+        
+        CSVReader.textLog(name+ " has deposited " + deposit);
     }
 
-    public void withdrawAccount(double checkingStartingBalance, double withdraw){
+    public void withdrawAccount(double checkingStartingBalance, double withdraw, String name){
         //TODO: withdraw
         if (withdraw <= checkingStartingBalance){
             this.checkingStartingBalance -= withdraw;
             System.out.println(withdraw + " has been withdrawn");
+            CSVReader.textLog(name+ " has withdrawn " + withdraw);
         }
         else {
             System.out.println("invalid amount, amount must be less than " + checkingStartingBalance);
@@ -133,7 +136,7 @@ public class Checking extends Account {
         this.checkingStartingBalance = checkingStartingBalance;
     }
 
-    public  void checkingUI(){
+    public  void checkingUI(String name){
         Scanner scanner = new Scanner(System.in);
         boolean quit = false;
         while(!quit){
@@ -148,12 +151,12 @@ public class Checking extends Account {
                 case "B":
                     System.out.println("Enter withdraw Amount:");
                     double withdrawAmount = Double.parseDouble(scanner.nextLine());
-                    withdrawAccount(this.checkingStartingBalance,withdrawAmount);
+                    withdrawAccount(this.checkingStartingBalance,withdrawAmount,name);
                     break;
                 case "C":
                     System.out.println("Enter deposit Amount:");
                     double depositAmount = Double.parseDouble(scanner.nextLine());
-                    depositAccount(this.checkingStartingBalance,depositAmount);
+                    depositAccount(this.checkingStartingBalance,depositAmount,name);
                     break;   
                 case "EXIT":
                     quit = true;

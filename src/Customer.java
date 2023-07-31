@@ -45,11 +45,11 @@ public class Customer extends Person {
                 if(name.equals(nameInput)){
                     System.out.println("Welcome " + name);
                     System.out.println("Please Select an Option:");
-                    System.out.println("A) Checking.  B) Credit.  C) Saving. D) Transfer. E) Pay To. Or Type EXIT");
+                    System.out.println("A) Checking.  B) Credit.  C) Saving. D) Transfer. E) Pay To. F)Transactions. Or Type EXIT");
                     String accountChoiceInput = scanner.nextLine();  // Read user input
                         switch(accountChoiceInput) {
                             case "A": 
-                                user.checking.checkingUI();;
+                                user.checking.checkingUI(name);
                                 break;
                             case "B":
                                 user.credit.creditUI();
@@ -59,8 +59,13 @@ public class Customer extends Person {
                                 break;   
                             case "D":
                                 user.checking.transferMoney();
+                                break;   
                             case "E":
                                 user.checking.PayMoneyTo();
+                                break;   
+                            case "F":
+                                Account.userTransactions(name);
+                                break;   
                             case "EXIT":
                                 counter = false;
                           default:
