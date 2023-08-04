@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * @author Juan Moreno, Javier Ontiveros
  * @version 1.0.0
  */
-public class Account {
+public class Account implements AccountInterface {
     protected Customer customer;
     protected Checking checking;
     protected Saving saving;
@@ -395,4 +395,23 @@ public class Account {
                 }
         }
     }
+}
+
+interface AccountInterface{
+    public Customer getCustomer();
+
+    public Checking getChecking();
+    
+    public Credit getCredit();
+
+    public Saving getSaving();
+
+    public void setChecking(Checking checking);
+
+    public void setCredit(Credit credit);
+
+    public void setCustomer(Customer customer);
+
+    public void setSaving(Saving saving);
+
 }

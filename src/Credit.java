@@ -80,11 +80,14 @@ public class Credit extends Account{
     }
 
     public void creditPaid(double amount){
-        double balance = this.creditStartingBalance + amount;
+        double balance = Math.abs(this.creditStartingBalance) + amount;
         if(balance <= this.creditMax){
             System.out.println("you have paid "+ amount);
             this.creditStartingBalance += amount;
             System.out.println("You now owe "+ this.creditStartingBalance);
+        }
+        else{
+            System.out.println("this amount is not valid");
         }
     }
 

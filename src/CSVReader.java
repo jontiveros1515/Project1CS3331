@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.IntStream;
@@ -268,7 +269,7 @@ public class CSVReader {
         LocalDateTime now = LocalDateTime.now();   
 
         try {
-            FileWriter fw = new FileWriter("USERTRANSACTIONSFILE.csv", true);
+            FileWriter fw = new FileWriter("USERTRANSACTIONSFILE--"+name+".csv", true);
             BufferedWriter writer = new BufferedWriter(fw);
 
             ArrayList<Account> users = Account.getUsers();
@@ -382,52 +383,91 @@ public class CSVReader {
         }
     }
 
+    public static void processTransactionsFromCSV() {
+      String fileName = "src/Transactions (1).csv";
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                String action = data[3];
 
-    //     public static  ReadTransactions(){
-    //     ArrayList<Account> users = new ArrayList<>();
+                switch (action) {
+                    case "pays":
+                        handlePaysTransaction(data);
+                        break;
+                    case "transfers":
+                        handleTransferTransaction(data);
+                        break;
+                    case "inquires":
+                        handleInquiryTransaction(data);
+                        break;
+                    case "withdraws":
+                        handleWithdrawTransaction(data);
+                        break;
+                    case "deposits":
+                        handleDepositTransaction(data);
+                        break;
+                    default:
+                        System.out.println("Unsupported action: " + action);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("transactions done!");
+    }
 
+    public static void handlePaysTransaction(String[] data) {
+        String fromFirstName = data[0];
+        String fromLastName = data[1];
+        String fromWhere = data[2];
+        String action = data[3];
+        String toFirstName = data[4];
+        String toLastName = data[5];
+        String toWhere = data[6];
+        double actionAmount = Double.parseDouble(data[7]);
 
-    //     try {
-    //         FileReader fr = new FileReader(file);
-    //         BufferedReader reader = new BufferedReader(fr);  
-    //         String line;
-    //         boolean headerLine = true;
-    //         String address = ""; 
+        
 
-    //         while ((line = reader.readLine()) != null) {
+        // Implement logic for paying from one account to another.
+    }
 
-    //             if (headerLine) {
-    //                 headerLine = false;
-    //                 continue; //Skips the header line
-    //             }
+    public static void handleTransferTransaction(String[] data) {
+        String fromFirstName = data[0];
+        String fromLastName = data[1];
+        String fromWhere = data[2];
+        String action = data[3];
+        String toFirstName = data[4];
+        String toLastName = data[5];
+        String toWhere = data[6];
+        double actionAmount = Double.parseDouble(data[7]);
 
-    //             //Split the CSV line into an array of values
-    //             address = line.substring(line.indexOf("\""), line.indexOf("\"", line.indexOf("\"") + 2));
+        // Implement logic for transferring money between accounts.
+    }
 
-    //             String[] data = line.split(",");
+    public static void handleInquiryTransaction(String[] data) {
+        String fromFirstName = data[0];
+        String fromLastName = data[1];
+        String fromWhere = data[2];
 
-    //             // Extract the bank user information from the data array
-    //             Person person = new Person(data[1], data[2], data[3], address, data[7]);
-    //             Customer customer = new Customer(person, Integer.parseInt(data[0]));
-    //             Checking checking = new Checking(Integer.parseInt(data[8]), Double.parseDouble(data[9]));
-    //             Saving savings = new Saving(Integer.parseInt(data[10]),Double.parseDouble(data[11]));
-    //             Credit credit = new Credit(Integer.parseInt(data[12]), Integer.parseInt(data[13]), Double.parseDouble(data[14]));
+        // Implement logic for account inquiries.
+    }
 
-    //             Account user = new Account(customer, checking, savings, credit);
+    public static void handleWithdrawTransaction(String[] data) {
+        String fromFirstName = data[0];
+        String fromLastName = data[1];
+        String fromWhere = data[2];
+        double actionAmount = Double.parseDouble(data[7]);
 
-    //             users.add(user);
-            
-    //         }
-    //         reader.close();
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //         // Handle the file reading exception as needed
-    //     }
-    //     return users;
-    // }
+        // Implement logic for withdrawing money from an account.
+    }
 
-    public static void logging(String log){
-        //TODO: create file 
-        // Example of dynamic : file.append(log);
+    public static void handleDepositTransaction(String[] data) {
+        String toFirstName = data[4];
+        String toLastName = data[5];
+        String toWhere = data[6];
+        double actionAmount = Double.parseDouble(data[7]);
+
+        // Implement logic for depositing money to an account.
     }
 }

@@ -45,12 +45,3 @@ public class RunBank {
     }
 }
 
-// a. Inquire about a balance.
-// b. Deposit money to an account.
-// c. Withdraw money from an account.
-// d. Transfer money between accounts.
-// e. Pay someone (i.e., Mickey pays Donald).
-// f. Pick an informative response for all the mentioned tasks (i.e., Deposit
-// of $XX successful, etc.)
-// i. Credit accounts should not be able to accept more than the
-// balance
